@@ -10,6 +10,7 @@ public class GalvenaKlase {
 		DecimalFormat df = new DecimalFormat("0.#");
 		
 		// Audzēkņu skaita ievade
+		
 		do {
 			System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
 			while(!scan.hasNextInt()) {
@@ -35,14 +36,21 @@ public class GalvenaKlase {
 		double[] semestraVertejums = new double[studSk];
 		
 		scan.nextLine();
-		
+		      
+
 		// Ievada audzēkņu vārdus, uzvārdus
-		for(int i=0; i<studenti.length; i++) {
-			do {
-				System.out.println("Ievadi "+(i+1)+". studentu");
-				studenti[i] = scan.nextLine().trim();
-			} while(!studenti[i].matches("^[\\p{L} ]+$"));
-		}
+		String[] skoleni=new String[studSk];
+        System.out.print("Ievadit darbu skaitu: ");
+        int drb=scan.nextInt();
+        scan.nextLine();
+        
+        String[] darbi=new String[drb];
+        int[] svars=new int[drb];
+        for(int i=0;i<studSk;i++)
+        {
+        	System.out.print("Vards "+(i+1)+": ");
+        skoleni[i]=scan.nextLine();
+        }
 		
 		// Definē kritērijus
 		int maxSvars = 100, sk = 1;
