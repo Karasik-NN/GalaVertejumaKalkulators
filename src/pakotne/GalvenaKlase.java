@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 
 public class GalvenaKlase {
-	
+	static Scanner scan = new Scanner(System.in);
 	public static int skaitlaParbaude(String zinojums, int min, int max) {
 		String ievade;
 		int skaitlis;
@@ -36,50 +36,32 @@ public class GalvenaKlase {
 		DecimalFormat df = new DecimalFormat("0.#");
 		
 			
-		
-		// Audzēkņu skaita ievade			 
+			
 		otrais.StudSk();
-		String[] studenti = new String[studSk];
+		int studsk = otrais.StudSk();
+		String[] studenti = new String[studsk];
 		// Vērtēšanas kritēriju skaita ievade
-		do {
-			System.out.println("Kāds būs kritēriju skaits?");
-			while(!scan.hasNextInt()) {
-				System.out.println("Kāds būs kritēriju skaits?");
-				scan.next();
-			}
-			kritSk = scan.nextInt();
-		}while(kritSk<1);
-		String[] kriteriji = new String[kritSk];
-		int[] kriterijaSvars = new int[kritSk];
-		int[][] kriterijaVertejums = new int[studSk][kritSk];
-		double[] semestraVertejums = new double[studSk];
+			
+		otrais.KritSk();
+		int kritsk = otrais.KritSk();
 		
-		scan.nextLine();
-		      
+		String[] kriteriji = new String[kritsk];
+		int[] kriterijaSvars = new int[kritsk];
+		int[][] kriterijaVertejums = new int[kritsk][kritsk];
+		double[] semestraVertejums = new double[kritsk];
 
-		// Ievada audzēkņu vārdus, uzvārdus
-		String[] skoleni=new String[studSk];
-        System.out.print("Ievadit darbu skaitu: ");
-        int drb=scan.nextInt();
-        scan.nextLine();
-        
-        String[] darbi=new String[drb];
-        int[] svars=new int[drb];
-        for(int i=0;i<studSk;i++)
-        {
-        	System.out.print("Vards "+(i+1)+": ");
-        skoleni[i]=scan.nextLine();
-        }
+		
+		VardUzvard();
 		
 		// Definē kritērijus
-		int maxSvars = 100, sk = 1;
+        int maxSvars = 100;
+		int sk = 1;
 		double atlSvars;
-		for(int i=0; i<kriteriji.length; i++) {
-			do {
-				System.out.println("Ievadi "+(i+1)+". kritēriju");
-				kriteriji[i] = scan.nextLine().trim();
-			} while(!kriteriji[i].matches("^[\\p{L} ]+$"));
-			
+for(int i=0; i<kriteriji.length; i++) {
+	do {
+		System.out.println("Ievadi "+(i+1)+". kritēriju");
+		kriteriji[i] = scan.nextLine().trim();
+	} while(!kriteriji[i].matches("^[\\p{L} ]+$"));
 			// Norāda katra kritērija svaru
 			do {
 				System.out.println("Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")");
@@ -135,7 +117,24 @@ public class GalvenaKlase {
 		}
 		scan.close();
 	}
-		}
+
+	public static void VardUzvard() {
+		String[] skoleni=new String[otrais.StudSk()];
+        System.out.print("Ievadit darbu skaitu: ");
+        int drb=scan.nextInt();
+        scan.nextLine();
+        
+        String[] darbi=new String[drb];
+        int[] svars=new int[drb];
+        for(int i=0;i<otrais.StudSk();i++)
+        {
+        	System.out.print("Vards "+(i+1)+": ");
+        skoleni[i]=scan.nextLine();
+        }
+	}
+}
+	
+		
 
 
 
