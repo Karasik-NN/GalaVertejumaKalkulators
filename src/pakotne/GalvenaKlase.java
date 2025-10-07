@@ -7,8 +7,6 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 
-
-
 public class GalvenaKlase {
 	
 	public static int skaitlaParbaude(String zinojums, int min, int max) {
@@ -17,8 +15,20 @@ public class GalvenaKlase {
 		while (true) {
 		ievade = JOptionPane.showInputDialog(null, zinojums, "Datu ievade", JOptionPane.INFORMATION_MESSAGE);
 		if (ievade == null) return -1;
+
+		try {
+		skaitlis = Integer.parseInt(ievade);
+		if (skaitlis < min || skaitlis > max) {
+		JOptionPane.showMessageDialog(null, "Noradits nekorets intervals", "Nekorekti dati", JOptionPane.WARNING_MESSAGE);
+		continue;
 		}
-	}
+		return skaitlis;
+		} catch (NumberFormatException e) {
+		JOptionPane.showMessageDialog(null, "Netika ievadits vesels skaitlis", "Nekorekti dati", JOptionPane.ERROR_MESSAGE);
+		}
+		}
+		}
+
 		
 	public static void main(String[] args) {
 		int studSk, kritSk;
@@ -28,17 +38,33 @@ public class GalvenaKlase {
 			
 		int izvele;
 		do {
-			skaitlaParbaude(
+			izvele=skaitlaParbaude(
 					"Ko vēlies darīt?\n"
 					+ "0 - Apturēt\n"
-					+ "1 - Izveidot objektu\n"
+					+ "1 - Audzēkņu skaita ievade\n"
 					+ "2 - Aplūkot objektus\n"
 					+ "3 - Izsaukt metodi", 0, 3);
 			if(izvele ==-1)
-				izvele =0;
+				izvele =0;						
 	
+			
+			switch(izvele) {
+			case 0:
+				JOptionPane.showMessageDialog(null,
+						"Programma apturēta!", "Paziņojums", 
+						JOptionPane.INFORMATION_MESSAGE);
+						break;				
+			case 1:
+				int sk;
+				String skolSk;
+				skolSk = JOptionPane.showInputDialog(null,"Cik studentiem aprēķināsi gala vērtējumu?",
+						JOptionPane.INFORMATION_MESSAGE);
+				sk = Integer.parseInt(skolSk);
+				break;
+				
+			}
 		// Audzēkņu skaita ievade
-		
+			
 		do {
 			System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
 			while(!scan.hasNextInt()) {
@@ -143,5 +169,12 @@ public class GalvenaKlase {
 					+ "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 		}
 		scan.close();
+	}while (izvele != 0);
+		}
 	}
-}
+
+	
+
+
+
+
