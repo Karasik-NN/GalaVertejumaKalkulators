@@ -31,50 +31,15 @@ public class GalvenaKlase {
 
 		
 	public static void main(String[] args) {
-		int studSk, kritSk;
+		int studSk = 0, kritSk;
 		Scanner scan = new Scanner(System.in);
 		DecimalFormat df = new DecimalFormat("0.#");
 		
 			
-		int izvele;
-		do {
-			izvele=skaitlaParbaude(
-					"Ko vēlies darīt?\n"
-					+ "0 - Apturēt\n"
-					+ "1 - Audzēkņu skaita ievade\n"
-					+ "2 - Aplūkot objektus\n"
-					+ "3 - Izsaukt metodi", 0, 3);
-			if(izvele ==-1)
-				izvele =0;						
-	
-			
-			switch(izvele) {
-			case 0:
-				JOptionPane.showMessageDialog(null,
-						"Programma apturēta!", "Paziņojums", 
-						JOptionPane.INFORMATION_MESSAGE);
-						break;				
-			case 1:
-				int sk;
-				String skolSk;
-				skolSk = JOptionPane.showInputDialog(null,"Cik studentiem aprēķināsi gala vērtējumu?",
-						JOptionPane.INFORMATION_MESSAGE);
-				sk = Integer.parseInt(skolSk);
-				break;
-				
-			}
-		// Audzēkņu skaita ievade
-			
-		do {
-			System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
-			while(!scan.hasNextInt()) {
-				System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
-				scan.next();
-			}
-			studSk = scan.nextInt();
-		}while(studSk<1);
-		String[] studenti = new String[studSk];
 		
+		// Audzēkņu skaita ievade			 
+		otrais.StudSk();
+		String[] studenti = new String[studSk];
 		// Vērtēšanas kritēriju skaita ievade
 		do {
 			System.out.println("Kāds būs kritēriju skaits?");
@@ -169,9 +134,10 @@ public class GalvenaKlase {
 					+ "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 		}
 		scan.close();
-	}while (izvele != 0);
-		}
 	}
+		}
+
+
 
 	
 
