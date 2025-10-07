@@ -4,12 +4,39 @@ package pakotne;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
+
+
+
 public class GalvenaKlase {
+	
+	public static int skaitlaParbaude(String zinojums, int min, int max) {
+		String ievade;
+		int skaitlis;
+		while (true) {
+		ievade = JOptionPane.showInputDialog(null, zinojums, "Datu ievade", JOptionPane.INFORMATION_MESSAGE);
+		if (ievade == null) return -1;
+		}
+	}
+		
 	public static void main(String[] args) {
 		int studSk, kritSk;
 		Scanner scan = new Scanner(System.in);
 		DecimalFormat df = new DecimalFormat("0.#");
 		
+			
+		int izvele;
+		do {
+			skaitlaParbaude(
+					"Ko vēlies darīt?\n"
+					+ "0 - Apturēt\n"
+					+ "1 - Izveidot objektu\n"
+					+ "2 - Aplūkot objektus\n"
+					+ "3 - Izsaukt metodi", 0, 3);
+			if(izvele ==-1)
+				izvele =0;
+	
 		// Audzēkņu skaita ievade
 		
 		do {
